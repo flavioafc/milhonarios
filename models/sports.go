@@ -12,6 +12,6 @@ type sport struct {
 
 //SportsResponse é o objeto de recebimento dos dados
 type SportsResponse struct {
-	Success string `json:"success"`
-	Data    []sport
+	Success bool    `json:"success"`
+	Data    []sport `json:"data"`
 }

@@ -3,16 +3,15 @@ package main
 import (
 	"fmt"
 	"milhonarios/api"
-	"strconv"
 )
 
 func main() {
 
-	sportResponse := api.GetSports()
+	oddResponse := api.GetOddsFake("uk")
+	fmt.Println(oddResponse)
 
-	for i := 0; i < len(sportResponse.Data); i++ {
-		fmt.Println(sportResponse.Data[i].Key)
-	}
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println(sportResponse.Data[i].Key + " * " + sportResponse.Data[i].Title)
+	// }
 
-	fmt.Printf("* Serão " + strconv.Itoa(len(sportResponse.Data)) + " chamadas!")
 }
