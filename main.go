@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	sportResponse := api.Sports()
+
+	sportResponse := api.GetSports()
 
 	for i := 0; i < len(sportResponse.Data); i++ {
 		fmt.Println(sportResponse.Data[i].Key)

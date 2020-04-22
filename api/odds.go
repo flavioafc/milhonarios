@@ -10,9 +10,9 @@ import (
 	"os"
 )
 
-//Sports chama api para consumir dados de todos os sports
-func Sports() models.Response {
-	var responseSport models.Response
+//GetSports chama api para consumir dados de todos os sports
+func GetSports() models.SportsResponse {
+	var sportsResponse models.SportsResponse
 	response, err := http.Get("http://api.the-odds-api.com/v3/sports/?apiKey=f2be2d2d006a74f6dccb2faa7aff2a97&all=1")
 
 	if err != nil {
@@ -25,7 +25,7 @@ func Sports() models.Response {
 		log.Fatal(err)
 	}
 
-	json.Unmarshal(responseData, &responseSport)
+	json.Unmarshal(responseData, &sportsResponse)
 
-	return responseSport
+	return sportsResponse
 }

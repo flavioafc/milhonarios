@@ -1,7 +1,7 @@
 package models
 
 //Sport representa os esportes na chamada  api
-type Sport struct {
+type sport struct {
 	Key          string `json:"key"`
 	Active       bool   `json:"active" `
 	Group        string `json:"group"`
@@ -10,8 +10,8 @@ type Sport struct {
 	HasOutrights bool   `json:"has_outrights"`
 }
 
-//Response é o objeto de recebimento dos dados
-type Response struct {
+//SportsResponse é o objeto de recebimento dos dados
+type SportsResponse struct {
 	Success string `json:"success"`
-	Data    []Sport
+	Data    []sport
 }
