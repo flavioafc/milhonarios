@@ -6,8 +6,8 @@ import (
 
 //Odds pertence a sites
 type odds struct {
-	H2H []float32 `json:"h2h"`
-	// H2HLay []float32 `json:"h2h_lay"`
+	H2H    []float32 `json:"h2h"`
+	H2HLay []float32 `json:"h2h_lay"`
 }
 
 //Sites é o  objeto que recebe da api sites

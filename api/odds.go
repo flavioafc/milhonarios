@@ -31,9 +31,9 @@ func GetSports() models.SportsResponse {
 }
 
 //GetOdds obtem os odds da api
-func GetOdds(region string) models.OddsResponse {
+func GetOdds(sportkey string, region string) models.OddsResponse {
 	var oddsResponse models.OddsResponse
-	url := fmt.Sprintf("https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=%s&mkt=h2h&apiKey=f2be2d2d006a74f6dccb2faa7aff2a97", region)
+	url := fmt.Sprintf("https://api.the-odds-api.com/v3/odds/?sport=%s&region=%s&mkt=h2h&apiKey=f2be2d2d006a74f6dccb2faa7aff2a97", sportkey, region)
 
 	response, err := http.Get(url)
 
@@ -53,10 +53,10 @@ func GetOdds(region string) models.OddsResponse {
 }
 
 //GetOddsFake é um  fake para testar a estrutura
-func GetOddsFake(region string) models.OddsResponse {
+func GetOddsFake(sportkey string, region string) models.OddsResponse {
 	var oddsResponse models.OddsResponse
 	// read file
-	data, err := ioutil.ReadFile("./mocks/odds.json")
+	data, err := ioutil.ReadFile("./mocks/odds_" + sportkey + "_" + region + ".json")
 	if err != nil {
 		fmt.Print(err)
 	}

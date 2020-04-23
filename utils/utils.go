@@ -33,7 +33,8 @@ func (t Time) Unix() int64 {
 
 // Time returns the JSON time as a time.Time instance in UTC
 func (t Time) Time() time.Time {
-	return time.Time(t).UTC()
+	location, _ := time.LoadLocation("America/Fortaleza")
+	return time.Time(t).UTC().UTC().In(location)
 }
 
 // String returns t as a formatted string

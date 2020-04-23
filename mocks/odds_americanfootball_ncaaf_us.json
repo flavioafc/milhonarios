@@ -1,0 +1,316 @@
+{
+    "success": true,
+    "data": [{
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Navy Midshipmen",
+                "Notre Dame Fighting Irish"
+            ],
+            "commence_time": 1598716800,
+            "home_team": "Notre Dame Fighting Irish",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "BYU Cougars",
+                "Utah Utes"
+            ],
+            "commence_time": 1599148800,
+            "home_team": "Utah Utes",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Alabama Crimson Tide",
+                "USC Trojans"
+            ],
+            "commence_time": 1599321600,
+            "home_team": "Alabama Crimson Tide",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Michigan Wolverines",
+                "Washington Huskies"
+            ],
+            "commence_time": 1599321600,
+            "home_team": "Washington Huskies",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "LSU Tigers",
+                "Texas Longhorns"
+            ],
+            "commence_time": 1599926400,
+            "home_team": "LSU Tigers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Ohio State Buckeyes",
+                "Oregon Ducks"
+            ],
+            "commence_time": 1599926400,
+            "home_team": "Oregon Ducks",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Clemson Tigers",
+                "Louisville Cardinals"
+            ],
+            "commence_time": 1599926400,
+            "home_team": "Clemson Tigers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Alabama Crimson Tide",
+                "Georgia Bulldogs"
+            ],
+            "commence_time": 1600531200,
+            "home_team": "Alabama Crimson Tide",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Michigan Wolverines",
+                "Wisconsin Badgers"
+            ],
+            "commence_time": 1601136000,
+            "home_team": "Michigan Wolverines",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Cincinnati Bearcats",
+                "Nebraska Cornhuskers"
+            ],
+            "commence_time": 1601136000,
+            "home_team": "Nebraska Cornhuskers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "USC Trojans",
+                "Utah Utes"
+            ],
+            "commence_time": 1601654400,
+            "home_team": "Utah Utes",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Baylor Bears",
+                "Oklahoma Sooners"
+            ],
+            "commence_time": 1601740800,
+            "home_team": "Oklahoma Sooners",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Michigan Wolverines",
+                "Penn State Nittany Lions"
+            ],
+            "commence_time": 1601740800,
+            "home_team": "Michigan Wolverines",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Notre Dame Fighting Irish",
+                "Wisconsin Badgers"
+            ],
+            "commence_time": 1601767800,
+            "home_team": "Wisconsin Badgers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Minnesota Golden Gophers",
+                "Wisconsin Badgers"
+            ],
+            "commence_time": 1602345600,
+            "home_team": "Wisconsin Badgers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Oklahoma Sooners",
+                "Texas Longhorns"
+            ],
+            "commence_time": 1602345600,
+            "home_team": "Oklahoma Sooners",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Auburn Tigers",
+                "Georgia Bulldogs"
+            ],
+            "commence_time": 1602345600,
+            "home_team": "Georgia Bulldogs",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Florida Gators",
+                "LSU Tigers"
+            ],
+            "commence_time": 1602345600,
+            "home_team": "Florida Gators",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Ohio State Buckeyes",
+                "Penn State Nittany Lions"
+            ],
+            "commence_time": 1603555200,
+            "home_team": "Penn State Nittany Lions",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Florida Gators",
+                "Georgia Bulldogs"
+            ],
+            "commence_time": 1604163600,
+            "home_team": "Georgia Bulldogs",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Alabama Crimson Tide",
+                "LSU Tigers"
+            ],
+            "commence_time": 1604768400,
+            "home_team": "LSU Tigers",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Oregon Ducks",
+                "USC Trojans"
+            ],
+            "commence_time": 1604768400,
+            "home_team": "Oregon Ducks",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Clemson Tigers",
+                "Notre Dame Fighting Irish"
+            ],
+            "commence_time": 1604795400,
+            "home_team": "Notre Dame Fighting Irish",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Michigan Wolverines",
+                "Ohio State Buckeyes"
+            ],
+            "commence_time": 1606582800,
+            "home_team": "Ohio State Buckeyes",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Iowa Hawkeyes",
+                "Wisconsin Badgers"
+            ],
+            "commence_time": 1606582800,
+            "home_team": "Iowa Hawkeyes",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "americanfootball_ncaaf",
+            "sport_nice": "NCAAF",
+            "teams": [
+                "Alabama Crimson Tide",
+                "Auburn Tigers"
+            ],
+            "commence_time": 1606582800,
+            "home_team": "Alabama Crimson Tide",
+            "sites": [],
+            "sites_count": 0
+        }
+    ]
+}

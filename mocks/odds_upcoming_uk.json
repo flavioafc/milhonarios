@@ -1,0 +1,361 @@
+{
+    "success": true,
+    "data": [{
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "EDward Gaming",
+                "Royal Never Give Up"
+            ],
+            "commence_time": 1587632549,
+            "home_team": "EDward Gaming",
+            "sites": [{
+                "site_key": "unibet",
+                "site_nice": "Unibet",
+                "last_update": 1587645708,
+                "odds": {
+                    "h2h": [
+                        1.02,
+                        11.0
+                    ]
+                }
+            }],
+            "sites_count": 1
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Excel Esports",
+                "Origen"
+            ],
+            "commence_time": 1587657600,
+            "home_team": "Excel Esports",
+            "sites": [{
+                    "site_key": "marathonbet",
+                    "site_nice": "Marathon Bet",
+                    "last_update": 1587646114,
+                    "odds": {
+                        "h2h": [
+                            2.24,
+                            1.65
+                        ]
+                    }
+                },
+                {
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587646091,
+                    "odds": {
+                        "h2h": [
+                            2.2,
+                            1.71
+                        ],
+                        "h2h_lay": [
+                            2.4,
+                            1.84
+                        ]
+                    }
+                },
+                {
+                    "site_key": "paddypower",
+                    "site_nice": "Paddy Power",
+                    "last_update": 1587646090,
+                    "odds": {
+                        "h2h": [
+                            2.1,
+                            1.67
+                        ]
+                    }
+                },
+                {
+                    "site_key": "unibet",
+                    "site_nice": "Unibet",
+                    "last_update": 1587646119,
+                    "odds": {
+                        "h2h": [
+                            2.08,
+                            1.67
+                        ]
+                    }
+                },
+                {
+                    "site_key": "onexbet",
+                    "site_nice": "1xBet",
+                    "last_update": 1587646087,
+                    "odds": {
+                        "h2h": [
+                            2.21,
+                            1.6
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 5
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "FC Schalke 04 Esports",
+                "Team WE"
+            ],
+            "commence_time": 1587664800,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [{
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587646091,
+                    "odds": {
+                        "h2h": [
+                            1.08,
+                            7.0
+                        ],
+                        "h2h_lay": [
+                            1.17,
+                            13.5
+                        ]
+                    }
+                },
+                {
+                    "site_key": "paddypower",
+                    "site_nice": "Paddy Power",
+                    "last_update": 1587646090,
+                    "odds": {
+                        "h2h": [
+                            1.1,
+                            6.0
+                        ]
+                    }
+                },
+                {
+                    "site_key": "unibet",
+                    "site_nice": "Unibet",
+                    "last_update": 1587646119,
+                    "odds": {
+                        "h2h": [
+                            1.08,
+                            6.5
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 3
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Team WE",
+                "Top Esports"
+            ],
+            "commence_time": 1587718800,
+            "home_team": "Top Esports",
+            "sites": [{
+                    "site_key": "unibet",
+                    "site_nice": "Unibet",
+                    "last_update": 1587646119,
+                    "odds": {
+                        "h2h": [
+                            4.2,
+                            1.2
+                        ]
+                    }
+                },
+                {
+                    "site_key": "marathonbet",
+                    "site_nice": "Marathon Bet",
+                    "last_update": 1587646114,
+                    "odds": {
+                        "h2h": [
+                            4.4,
+                            1.21
+                        ]
+                    }
+                },
+                {
+                    "site_key": "matchbook",
+                    "site_nice": "Matchbook",
+                    "last_update": 1587646110,
+                    "odds": {
+                        "h2h": [
+                            4.9,
+                            1.21
+                        ],
+                        "h2h_lay": [
+                            5.8,
+                            1.26
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 3
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Dominus Esports",
+                "Fnatic"
+            ],
+            "commence_time": 1587747600,
+            "home_team": "Dominus Esports",
+            "sites": [{
+                    "site_key": "marathonbet",
+                    "site_nice": "Marathon Bet",
+                    "last_update": 1587646114,
+                    "odds": {
+                        "h2h": [
+                            1.67,
+                            2.2
+                        ]
+                    }
+                },
+                {
+                    "site_key": "unibet",
+                    "site_nice": "Unibet",
+                    "last_update": 1587646119,
+                    "odds": {
+                        "h2h": [
+                            1.65,
+                            2.1
+                        ]
+                    }
+                },
+                {
+                    "site_key": "paddypower",
+                    "site_nice": "Paddy Power",
+                    "last_update": 1587646090,
+                    "odds": {
+                        "h2h": [
+                            1.62,
+                            2.2
+                        ]
+                    }
+                },
+                {
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587646091,
+                    "odds": {
+                        "h2h": [
+                            1.68,
+                            2.24
+                        ],
+                        "h2h_lay": [
+                            1.81,
+                            2.48
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 4
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Counter Logic Gaming",
+                "FC Schalke 04 Esports"
+            ],
+            "commence_time": 1587747600,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [{
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587646091,
+                    "odds": {
+                        "h2h": [
+                            1.82,
+                            2.02
+                        ],
+                        "h2h_lay": [
+                            1.99,
+                            2.22
+                        ]
+                    }
+                },
+                {
+                    "site_key": "paddypower",
+                    "site_nice": "Paddy Power",
+                    "last_update": 1587646090,
+                    "odds": {
+                        "h2h": [
+                            1.73,
+                            2.0
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 2
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "FC Schalke 04 Esports",
+                "G2 Esports"
+            ],
+            "commence_time": 1587754800,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "G2 Esports",
+                "LNG Esports"
+            ],
+            "commence_time": 1587754800,
+            "home_team": "LNG Esports",
+            "sites": [{
+                "site_key": "unibet",
+                "site_nice": "Unibet",
+                "last_update": 1587646119,
+                "odds": {
+                    "h2h": [
+                        2.2,
+                        1.62
+                    ]
+                }
+            }],
+            "sites_count": 1
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Excel Esports",
+                "Team WE"
+            ],
+            "commence_time": 1587758400,
+            "home_team": "Excel Esports",
+            "sites": [{
+                    "site_key": "unibet",
+                    "site_nice": "Unibet",
+                    "last_update": 1587646119,
+                    "odds": {
+                        "h2h": [
+                            1.8,
+                            1.95
+                        ]
+                    }
+                },
+                {
+                    "site_key": "paddypower",
+                    "site_nice": "Paddy Power",
+                    "last_update": 1587646090,
+                    "odds": {
+                        "h2h": [
+                            1.73,
+                            2.0
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 2
+        }
+    ]
+}
