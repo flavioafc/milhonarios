@@ -1,0 +1,246 @@
+{
+    "success": true,
+    "data": [{
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "FC Schalke 04 Esports",
+                "Team WE"
+            ],
+            "commence_time": 1587664800,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [{
+                "site_key": "betfair",
+                "site_nice": "Betfair",
+                "last_update": 1587663170,
+                "odds": {
+                    "h2h": [
+                        1.09,
+                        7.2
+                    ],
+                    "h2h_lay": [
+                        1.15,
+                        12.5
+                    ]
+                }
+            }],
+            "sites_count": 1
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Team WE",
+                "Top Esports"
+            ],
+            "commence_time": 1587718800,
+            "home_team": "Top Esports",
+            "sites": [{
+                    "site_key": "bovada",
+                    "site_nice": "Bovada",
+                    "last_update": 1587663158,
+                    "odds": {
+                        "h2h": [
+                            4.2,
+                            1.2
+                        ]
+                    }
+                },
+                {
+                    "site_key": "mybookieag",
+                    "site_nice": "MyBookie.ag",
+                    "last_update": 1587663158,
+                    "odds": {
+                        "h2h": [
+                            3.9,
+                            1.2
+                        ]
+                    }
+                },
+                {
+                    "site_key": "bookmaker",
+                    "site_nice": "Bookmaker",
+                    "last_update": 1587663180,
+                    "odds": {
+                        "h2h": [
+                            4.5,
+                            1.2
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 3
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Counter Logic Gaming",
+                "FC Schalke 04 Esports"
+            ],
+            "commence_time": 1587747600,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [{
+                    "site_key": "bookmaker",
+                    "site_nice": "Bookmaker",
+                    "last_update": 1587663180,
+                    "odds": {
+                        "h2h": [
+                            1.69,
+                            2.15
+                        ]
+                    }
+                },
+                {
+                    "site_key": "mybookieag",
+                    "site_nice": "MyBookie.ag",
+                    "last_update": 1587663158,
+                    "odds": {
+                        "h2h": [
+                            1.75,
+                            1.94
+                        ]
+                    }
+                },
+                {
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587663170,
+                    "odds": {
+                        "h2h": [
+                            1.89,
+                            1.98
+                        ],
+                        "h2h_lay": [
+                            2.04,
+                            2.14
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 3
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Dominus Esports",
+                "Fnatic"
+            ],
+            "commence_time": 1587747600,
+            "home_team": "Dominus Esports",
+            "sites": [{
+                    "site_key": "bookmaker",
+                    "site_nice": "Bookmaker",
+                    "last_update": 1587663180,
+                    "odds": {
+                        "h2h": [
+                            1.65,
+                            2.24
+                        ]
+                    }
+                },
+                {
+                    "site_key": "betfair",
+                    "site_nice": "Betfair",
+                    "last_update": 1587663170,
+                    "odds": {
+                        "h2h": [
+                            1.68,
+                            2.24
+                        ],
+                        "h2h_lay": [
+                            1.81,
+                            2.48
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 2
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "G2 Esports",
+                "LNG Esports"
+            ],
+            "commence_time": 1587754800,
+            "home_team": "LNG Esports",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "FC Schalke 04 Esports",
+                "G2 Esports"
+            ],
+            "commence_time": 1587754800,
+            "home_team": "FC Schalke 04 Esports",
+            "sites": [{
+                    "site_key": "mybookieag",
+                    "site_nice": "MyBookie.ag",
+                    "last_update": 1587663158,
+                    "odds": {
+                        "h2h": [
+                            1.59,
+                            2.16
+                        ]
+                    }
+                },
+                {
+                    "site_key": "bookmaker",
+                    "site_nice": "Bookmaker",
+                    "last_update": 1587663180,
+                    "odds": {
+                        "h2h": [
+                            2.43,
+                            1.56
+                        ]
+                    }
+                }
+            ],
+            "sites_count": 2
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Excel Esports",
+                "Team WE"
+            ],
+            "commence_time": 1587758400,
+            "home_team": "Excel Esports",
+            "sites": [],
+            "sites_count": 0
+        },
+        {
+            "sport_key": "esports_lol",
+            "sport_nice": "League of Legends",
+            "teams": [
+                "Origen",
+                "Team WE"
+            ],
+            "commence_time": 1587834000,
+            "home_team": "Team WE",
+            "sites": [{
+                "site_key": "betfair",
+                "site_nice": "Betfair",
+                "last_update": 1587663170,
+                "odds": {
+                    "h2h": [
+                        1.51,
+                        2.62
+                    ],
+                    "h2h_lay": [
+                        1.62,
+                        2.98
+                    ]
+                }
+            }],
+            "sites_count": 1
+        }
+    ]
+}
