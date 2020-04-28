@@ -3,6 +3,8 @@ package models
 import (
 	"fmt"
 	"milhonarios/utils"
+
+	"github.com/shopspring/decimal"
 )
 
 //Odds pertence a sites
@@ -36,6 +38,14 @@ type OddsResponse struct {
 	Data    []Odd `json:"data"`
 }
 
+//Resultado exibe o resultado final
+type Resultado struct {
+	Odd             decimal.Decimal
+	Percentual      float32
+	AporteInvestido decimal.Decimal
+	Lucro           decimal.Decimal
+}
+
 //Filter filtra
 func (vs *OddsResponse) Filter(f func(criteria Odd) bool) []Odd {
 	vsf := make([]Odd, 0)
@@ -48,26 +58,16 @@ func (vs *OddsResponse) Filter(f func(criteria Odd) bool) []Odd {
 	return vsf
 }
 
-type Analisados struct {
-	Data       int
-	SitesIndex []int
-}
-
 //FilterSites filtra
 func (vs *OddsResponse) FilterSites(f func(criteria Odd) bool) []Sites {
 	sts := make([]Sites, 0)
-	analisados := make([]Analisados, 0)
-
-	for index, v := range vs.Data {
-		var itemAnalisado Analisados
+	for _, v := range vs.Data {
 		if f(v) {
-			itemAnalisado.Data = index
 			for siteindex, x := range v.Sites {
 				sts = append(sts, x)
 				siteComparar := siteindex
 
 				for indexOdd, oddAnterior := range x.Odds.H2H {
-					s := fmt.Sprintf("%f >>", oddAnterior)
 					//comparar com  o proximo Odd do proximo site
 					siteComparar = siteComparar + 1
 					var oddsIguais bool
@@ -76,8 +76,7 @@ func (vs *OddsResponse) FilterSites(f func(criteria Odd) bool) []Sites {
 						if oddsIguais {
 							break
 						}
-
-						go CalcularOddAnterior(oddAnterior)
+						resultadoOddAnterior := CalcularOddAnterior(500, oddAnterior)
 
 						var proximoOdd float32
 						if indexOdd == 0 {
@@ -86,8 +85,12 @@ func (vs *OddsResponse) FilterSites(f func(criteria Odd) bool) []Sites {
 							proximoOdd = v.Sites[i].Odds.H2H[0]
 						}
 
-						go CalcularProximaOdd(proximoOdd)
-						s = s + fmt.Sprintf("%f :: ", proximoOdd)
+						resultadoProximaOdd := CalcularProximaOdd(500, proximoOdd)
+
+						fmt.Println(resultadoOddAnterior)
+						fmt.Println("----------------------------------------------------------------")
+						fmt.Println(resultadoProximaOdd)
+						fmt.Println("============================= FIM  FIM  FIM  FIM ====================================")
 					}
 
 					if oddsIguais {
@@ -95,10 +98,7 @@ func (vs *OddsResponse) FilterSites(f func(criteria Odd) bool) []Sites {
 					}
 					siteComparar = siteindex
 				}
-				itemAnalisado.SitesIndex = append(itemAnalisado.SitesIndex, siteindex)
 			}
-
-			analisados = append(analisados, itemAnalisado)
 		}
 
 	}
@@ -106,13 +106,36 @@ func (vs *OddsResponse) FilterSites(f func(criteria Odd) bool) []Sites {
 }
 
 //CalcularOddAnterior Efetua o calculo de  viabilidade de  odd
-func CalcularOddAnterior(odd float32) {
-
+func CalcularOddAnterior(aporteTotal float32, odd float32) []Resultado {
+	return calculo(aporteTotal, odd)
 }
 
 //CalcularProximaOdd Efetua o calculo de  viabilidade de  odd
-func CalcularProximaOdd(odd float32) {
+func CalcularProximaOdd(aporteTotal float32, odd float32) []Resultado {
+	return calculo(aporteTotal, odd)
+}
 
+func calculo(aporteTotalSite float32, odd float32) []Resultado {
+	var responseResultado []Resultado
+	valorAporteTotal := decimal.NewFromFloat32(aporteTotalSite)
+	valorOdd := decimal.NewFromFloat32(odd)
+
+	var i float32
+	for i = 1; i <= 100; i++ {
+		percentual := decimal.NewFromFloat32(i / 100)
+
+		aporteInvestido := valorAporteTotal.Mul(percentual)
+		lucro := valorOdd.Mul(aporteInvestido)
+
+		itemResultado := Resultado{Odd: valorOdd, Percentual: i, AporteInvestido: aporteInvestido, Lucro: lucro}
+		if lucro.GreaterThan(valorAporteTotal) {
+			responseResultado = append(responseResultado, itemResultado)
+			break
+		}
+		responseResultado = append(responseResultado, itemResultado)
+	}
+
+	return responseResultado
 }
 
 func equal(a []float32, b []float32) bool {
