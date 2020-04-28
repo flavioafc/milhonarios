@@ -2,12 +2,17 @@ package main
 
 import (
 	"fmt"
+	"milhonarios/api"
 )
 
 func main() {
 
-	x := FiltrarMaisDeUmSite()
+	oddResponse1 := api.GetOddsFake("upcoming", "us_2")
+	filtrado := FiltrarMaisDeUmSite(oddResponse1)
 
-	fmt.Println(len(x))
+	fmt.Println(filtrado)
+	//odds := FiltrarMaisDeUmSite(oddResponse1)
+
+	//OddsDiferentes(odds)
 
 }

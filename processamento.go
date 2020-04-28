@@ -1,15 +1,24 @@
 package main
 
 import (
-	"milhonarios/api"
 	"milhonarios/models"
 )
 
 //FiltrarMaisDeUmSite filtra  mais de 1 site
-func FiltrarMaisDeUmSite() []models.Odd {
-	oddResponse1 := api.GetOddsFake("upcoming", "au")
-
-	return oddResponse1.Filter(func(v models.Odd) bool {
+func FiltrarMaisDeUmSite(odds models.OddsResponse) []models.Sites {
+	return odds.FilterSites(func(v models.Odd) bool {
 		return v.SitesCount > 1
 	})
+}
+
+func equal(a, b []float32) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }
