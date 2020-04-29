@@ -8,11 +8,7 @@ import (
 func main() {
 
 	oddResponse1 := api.GetOddsFake("upcoming", "us_2")
-	filtrado := FiltrarMaisDeUmSite(oddResponse1)
+	filtrado := FiltrarMaisDeUmSite(500, oddResponse1)
 
 	fmt.Println(filtrado)
-	//odds := FiltrarMaisDeUmSite(oddResponse1)
-
-	//OddsDiferentes(odds)
-
 }

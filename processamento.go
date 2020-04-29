@@ -5,8 +5,8 @@ import (
 )
 
 //FiltrarMaisDeUmSite filtra  mais de 1 site
-func FiltrarMaisDeUmSite(odds models.OddsResponse) []models.Sites {
-	return odds.FilterSites(func(v models.Odd) bool {
+func FiltrarMaisDeUmSite(aporteTotal float32, odds models.OddsResponse) []models.ResultadoFinal {
+	return odds.FilterSites(aporteTotal, func(v models.Odd) bool {
 		return v.SitesCount > 1
 	})
 }
