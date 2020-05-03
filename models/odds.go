@@ -1,6 +1,7 @@
 package models
 
 import (
+	"math"
 	"milhonarios/utils"
 
 	"github.com/shopspring/decimal"
@@ -39,10 +40,14 @@ type OddsResponse struct {
 
 //ResultadoFinal exibe os resultados pro front
 type ResultadoFinal struct {
-	Esporte string
-	Titulo  string
-	Data    utils.Time
-	Sites   []ResultadoOdds
+	Esporte     string
+	Titulo      string
+	Data        utils.Time
+	Combinacoes []SitesCombinados
+}
+
+type SitesCombinados struct {
+	Sites []ResultadoOdds
 }
 
 //ResultadoOdds exibe o resultado final
@@ -66,9 +71,14 @@ func (vs *OddsResponse) Filter(f func(criteria Odd) bool) []Odd {
 	return vsf
 }
 
+var percentualMaximo decimal.Decimal
+
 //FilterSites filtra
 func (vs *OddsResponse) FilterSites(aporteTotal float32, f func(criteria Odd) bool) []ResultadoFinal {
 	var RetornoFinal []ResultadoFinal
+	var resultadoFinal ResultadoFinal
+	var sitesCombinados []SitesCombinados
+	var titulo string
 
 	sts := make([]Sites, 0)
 	for _, v := range vs.Data {
@@ -84,11 +94,10 @@ func (vs *OddsResponse) FilterSites(aporteTotal float32, f func(criteria Odd) bo
 
 					for i := siteComparar; i <= len(v.Sites)-1; i++ {
 						oddsIguais = equal(x.Odds.H2H, v.Sites[i].Odds.H2H)
+
 						if oddsIguais {
 							continue
 						}
-
-						resultadoOddAnterior := CalcularOddAnterior(aporteTotal, oddAnterior)
 
 						var proximoOdd float32
 						if indexOdd == 0 {
@@ -97,78 +106,148 @@ func (vs *OddsResponse) FilterSites(aporteTotal float32, f func(criteria Odd) bo
 							proximoOdd = v.Sites[i].Odds.H2H[0]
 						}
 
-						resultadoProximaOdd := CalcularProximaOdd(aporteTotal, proximoOdd)
+						var deOddMenor, ateOddMenor float32
+						var deOddMaior, ateOddMaior float32
 
+						var resultadoOddAnterior []ResultadoOdds
+						var resultadoProximaOdd []ResultadoOdds
+
+						if oddAnterior > proximoOdd {
+
+							deOddMenor = (aporteTotal / proximoOdd) * 100 / aporteTotal
+							deOddMaior = (aporteTotal / oddAnterior) * 100 / aporteTotal
+							ateOddMenor = deOddMaior
+							ateOddMaior = ateOddMenor + (ateOddMenor - deOddMenor) + 1
+
+							if lucrativo(aporteTotal, int(deOddMaior), proximoOdd) {
+								resultadoOddAnterior = CalcularOddAnterior(aporteTotal, oddAnterior, deOddMenor, ateOddMenor)
+								resultadoProximaOdd = CalcularProximaOdd(aporteTotal, proximoOdd, deOddMaior, ateOddMaior)
+							} else {
+								continue
+							}
+
+						} else {
+
+							deOddMenor = (aporteTotal / oddAnterior) * 100 / aporteTotal
+							deOddMaior = (aporteTotal / proximoOdd) * 100 / aporteTotal
+							ateOddMenor = deOddMenor + (deOddMenor - deOddMaior) + 1
+							ateOddMaior = ateOddMenor
+
+							if lucrativo(aporteTotal, int(deOddMaior), oddAnterior) {
+								resultadoOddAnterior = CalcularOddAnterior(aporteTotal, oddAnterior, deOddMenor, ateOddMenor)
+								resultadoProximaOdd = CalcularProximaOdd(aporteTotal, proximoOdd, deOddMaior, ateOddMaior)
+							} else {
+								continue
+							}
+
+						}
 						var finalResultOdds []ResultadoOdds
+
 						if resultadoOddAnterior[0].Odd.GreaterThan(resultadoProximaOdd[0].Odd) {
 							finalResultOdds = comparar(aporteTotal, resultadoOddAnterior, resultadoProximaOdd, x.SiteNice, v.Sites[i].SiteNice)
 						} else {
 							finalResultOdds = comparar(aporteTotal, resultadoProximaOdd, resultadoOddAnterior, v.Sites[i].SiteNice, x.SiteNice)
 						}
 
-						resultadoFinal := ResultadoFinal{Esporte: v.SportNice, Titulo: v.Teams[0] + " vs " + v.Teams[1], Data: v.CommenceTime, Sites: finalResultOdds}
-						RetornoFinal = append(RetornoFinal, resultadoFinal)
+						if titulo == "" || titulo == v.Teams[0]+" vs "+v.Teams[1] {
+							// inserir nova combinação
+							titulo = v.Teams[0] + " vs " + v.Teams[1]
+							itensCombinados := finalResultOdds
+							sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
+							resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
+
+						} else {
+							RetornoFinal = append(RetornoFinal, resultadoFinal)
+
+							titulo = v.Teams[0] + " vs " + v.Teams[1]
+							itensCombinados := finalResultOdds
+							sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
+							resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
+						}
+
 					}
 					siteComparar = siteindex
 				}
 			}
 		}
 	}
+
+	//se retornofinal tiver vazio e tiver algo em resultaFinal, então adiciona
+	if len(RetornoFinal) == 0 && resultadoFinal.Titulo != "" {
+		RetornoFinal = append(RetornoFinal, resultadoFinal)
+	}
 	return RetornoFinal
 }
 
-func comparar(aporteTotal float32, maiorResultadoOdd []ResultadoOdds, menorResultadoOdd []ResultadoOdds, siteAnterior string, proximoSite string) []ResultadoOdds {
+func lucrativo(aporteTotal float32, percentualdeMaiorOdd int, oddMenor float32) bool {
+	valor1 := aporteTotal * float32(percentualdeMaiorOdd) / 100
+	valor2 := aporteTotal - valor1
+	resultado := valor2 * oddMenor
 
-	maiorResultOdd := maiorResultadoOdd[len(maiorResultadoOdd)-1]
-	indiceMaiorLucroMenorOdd := len(menorResultadoOdd) - 1
+	if resultado <= aporteTotal {
+		return false
+	}
+
+	return true
+}
+
+func comparar(aporteTotal float32, maiorResultadoOdd []ResultadoOdds, menorResultadoOdd []ResultadoOdds, siteAnterior string, proximoSite string) []ResultadoOdds {
 	var resultado []ResultadoOdds
 
-	for i := indiceMaiorLucroMenorOdd; i >= 0; i-- {
-		somatorio := maiorResultOdd.AporteInvestido.Add(menorResultadoOdd[i].AporteInvestido)
-		aporteTotal := decimal.NewFromFloat32(aporteTotal)
-
-		if somatorio.Equal(aporteTotal) {
-			maiorResultOdd.Site = siteAnterior
-			menorResultadoOdd[i].Site = proximoSite
-
-			resultado = append(resultado, maiorResultOdd, menorResultadoOdd[i])
+	j := len(menorResultadoOdd) - 1
+	for i := 0; i <= len(maiorResultadoOdd); i++ {
+		subtracao := menorResultadoOdd[j].Lucro.Sub(maiorResultadoOdd[i].Lucro)
+		if subtracao.LessThan(decimal.Zero) {
+			maiorResultadoOdd[i-1].Site = siteAnterior
+			menorResultadoOdd[j+1].Site = proximoSite
+			resultado = append(resultado, maiorResultadoOdd[i-1], menorResultadoOdd[j+1])
+			break
 		}
+		j--
 	}
 
 	return resultado
 }
 
 //CalcularOddAnterior Efetua o calculo de  viabilidade de  odd
-func CalcularOddAnterior(aporteTotal float32, odd float32) []ResultadoOdds {
-	return calculo(aporteTotal, odd)
+func CalcularOddAnterior(aporteTotal float32, odd float32, de float32, ate float32) []ResultadoOdds {
+	return calculo(aporteTotal, odd, de, ate)
 }
 
 //CalcularProximaOdd Efetua o calculo de  viabilidade de  odd
-func CalcularProximaOdd(aporteTotal float32, odd float32) []ResultadoOdds {
-	return calculo(aporteTotal, odd)
+func CalcularProximaOdd(aporteTotal float32, odd float32, de float32, ate float32) []ResultadoOdds {
+	return calculo(aporteTotal, odd, de, ate)
 }
 
-func calculo(aporteTotal float32, odd float32) []ResultadoOdds {
+func calculo(aporteTotal float32, odd float32, de float32, ate float32) []ResultadoOdds {
 	var responseResultado []ResultadoOdds
-	valorAporteTotal := decimal.NewFromFloat32(aporteTotal)
-	valorOdd := decimal.NewFromFloat32(odd)
+
+	//if possuiDecimalPlaces(2, de) {
+	de = converterParaDuasCasas(de)
+	//}
 
 	var i float32
-	for i = 1; i <= 100; i++ {
-		percentual := decimal.NewFromFloat32(i / 100)
+	for i = de; i <= ate; i++ {
+		percentual := i / 100
 
-		aporteInvestido := valorAporteTotal.Mul(percentual)
-		lucro := valorOdd.Mul(aporteInvestido)
+		aporteInvestido := aporteTotal * percentual
+		lucro := odd * aporteInvestido
 
-		itemResultado := ResultadoOdds{Odd: valorOdd, Percentual: i, AporteInvestido: aporteInvestido, Lucro: lucro}
-		if lucro.GreaterThan(valorAporteTotal) {
-			responseResultado = append(responseResultado, itemResultado)
-			break
-		}
+		itemResultado := ResultadoOdds{Odd: decimal.NewFromFloat32(odd), Percentual: float32(i), AporteInvestido: decimal.NewFromFloat32(aporteInvestido), Lucro: decimal.NewFromFloat32(lucro)}
+		// if lucro.GreaterThan(valorAporteTotal) {
+		// 	responseResultado = append(responseResultado, itemResultado)
+		// 	break
+		// }
 		responseResultado = append(responseResultado, itemResultado)
 	}
 
 	return responseResultado
+}
+
+func converterParaDuasCasas(valor float32) float32 {
+	valorConvertido := float32(math.Round(float64(valor)))
+
+	return valorConvertido
 }
 
 func equal(a []float32, b []float32) bool {
