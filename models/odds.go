@@ -144,9 +144,9 @@ func (vs *OddsResponse) FilterSites(aporteTotal float32, f func(criteria Odd) bo
 						var finalResultOdds []ResultadoOdds
 
 						if resultadoOddAnterior[0].Odd.GreaterThan(resultadoProximaOdd[0].Odd) {
-							finalResultOdds = comparar(aporteTotal, resultadoOddAnterior, resultadoProximaOdd, x.SiteNice, v.Sites[i].SiteNice)
+							finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoOddAnterior, resultadoProximaOdd, x.SiteNice, v.Sites[i].SiteNice)
 						} else {
-							finalResultOdds = comparar(aporteTotal, resultadoProximaOdd, resultadoOddAnterior, v.Sites[i].SiteNice, x.SiteNice)
+							finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoProximaOdd, resultadoOddAnterior, v.Sites[i].SiteNice, x.SiteNice)
 						}
 
 						if titulo == "" || titulo == v.Teams[0]+" vs "+v.Teams[1] {
@@ -191,7 +191,7 @@ func lucrativo(aporteTotal float32, percentualdeMaiorOdd int, oddMenor float32) 
 	return true
 }
 
-func comparar(aporteTotal float32, maiorResultadoOdd []ResultadoOdds, menorResultadoOdd []ResultadoOdds, siteAnterior string, proximoSite string) []ResultadoOdds {
+func melhorLucratividadeEntreSites(aporteTotal float32, maiorResultadoOdd []ResultadoOdds, menorResultadoOdd []ResultadoOdds, siteAnterior string, proximoSite string) []ResultadoOdds {
 	var resultado []ResultadoOdds
 
 	j := len(menorResultadoOdd) - 1
@@ -222,9 +222,7 @@ func CalcularProximaOdd(aporteTotal float32, odd float32, de float32, ate float3
 func calculo(aporteTotal float32, odd float32, de float32, ate float32) []ResultadoOdds {
 	var responseResultado []ResultadoOdds
 
-	//if possuiDecimalPlaces(2, de) {
 	de = converterParaDuasCasas(de)
-	//}
 
 	var i float32
 	for i = de; i <= ate; i++ {
@@ -234,10 +232,6 @@ func calculo(aporteTotal float32, odd float32, de float32, ate float32) []Result
 		lucro := odd * aporteInvestido
 
 		itemResultado := ResultadoOdds{Odd: decimal.NewFromFloat32(odd), Percentual: float32(i), AporteInvestido: decimal.NewFromFloat32(aporteInvestido), Lucro: decimal.NewFromFloat32(lucro)}
-		// if lucro.GreaterThan(valorAporteTotal) {
-		// 	responseResultado = append(responseResultado, itemResultado)
-		// 	break
-		// }
 		responseResultado = append(responseResultado, itemResultado)
 	}
 
