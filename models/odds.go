@@ -143,28 +143,29 @@ func (vs *OddsResponse) FilterSites(aporteTotal float32, f func(criteria Odd) bo
 						}
 						var finalResultOdds []ResultadoOdds
 
-						if resultadoOddAnterior[0].Odd.GreaterThan(resultadoProximaOdd[0].Odd) {
-							finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoOddAnterior, resultadoProximaOdd, x.SiteNice, v.Sites[i].SiteNice)
-						} else {
-							finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoProximaOdd, resultadoOddAnterior, v.Sites[i].SiteNice, x.SiteNice)
+						if resultadoOddAnterior != nil {
+							if resultadoOddAnterior[0].Odd.GreaterThan(resultadoProximaOdd[0].Odd) {
+								finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoOddAnterior, resultadoProximaOdd, x.SiteNice, v.Sites[i].SiteNice)
+							} else {
+								finalResultOdds = melhorLucratividadeEntreSites(aporteTotal, resultadoProximaOdd, resultadoOddAnterior, v.Sites[i].SiteNice, x.SiteNice)
+							}
+
+							if titulo == "" || titulo == v.Teams[0]+" vs "+v.Teams[1] {
+								// inserir nova combinação
+								titulo = v.Teams[0] + " vs " + v.Teams[1]
+								itensCombinados := finalResultOdds
+								sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
+								resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
+
+							} else {
+								RetornoFinal = append(RetornoFinal, resultadoFinal)
+
+								titulo = v.Teams[0] + " vs " + v.Teams[1]
+								itensCombinados := finalResultOdds
+								sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
+								resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
+							}
 						}
-
-						if titulo == "" || titulo == v.Teams[0]+" vs "+v.Teams[1] {
-							// inserir nova combinação
-							titulo = v.Teams[0] + " vs " + v.Teams[1]
-							itensCombinados := finalResultOdds
-							sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
-							resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
-
-						} else {
-							RetornoFinal = append(RetornoFinal, resultadoFinal)
-
-							titulo = v.Teams[0] + " vs " + v.Teams[1]
-							itensCombinados := finalResultOdds
-							sitesCombinados = append(sitesCombinados, SitesCombinados{Sites: itensCombinados})
-							resultadoFinal = ResultadoFinal{Esporte: v.SportNice, Titulo: titulo, Data: v.CommenceTime, Combinacoes: sitesCombinados}
-						}
-
 					}
 					siteComparar = siteindex
 				}
@@ -222,7 +223,8 @@ func CalcularProximaOdd(aporteTotal float32, odd float32, de float32, ate float3
 func calculo(aporteTotal float32, odd float32, de float32, ate float32) []ResultadoOdds {
 	var responseResultado []ResultadoOdds
 
-	de = converterParaDuasCasas(de)
+	//converte para 2 casas decimais
+	de = float32(math.Round(float64(de)))
 
 	var i float32
 	for i = de; i <= ate; i++ {
@@ -236,12 +238,6 @@ func calculo(aporteTotal float32, odd float32, de float32, ate float32) []Result
 	}
 
 	return responseResultado
-}
-
-func converterParaDuasCasas(valor float32) float32 {
-	valorConvertido := float32(math.Round(float64(valor)))
-
-	return valorConvertido
 }
 
 func equal(a []float32, b []float32) bool {
